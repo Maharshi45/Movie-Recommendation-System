@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'staticFiles/bootstrap.min.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'staticFiles/mainv5.css' %}">
+  <link rel="stylesheet" href="{% static 'staticFiles/style.css' %}">
+</head>
+
+<body id="main" class="purple_color home_page_1">
+<header>
+  <div class="header_top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 col-sm-12 col-xs-12 header_logo">
+          {#          <p class="logo_cont">HD movies at the smallest file size.</p>#}
+        </div>
+        <div class="col-md-5 col-sm-12 col-xs-12">
+          <div class="full">
+            <div id="mySidenav" class="sidenav">
+              <a href="#" class="closebtn" onclick="closeNav()">×</a>
+              <ul>
+                <li class="">
+                  <a href="home">Home</a>
+                </li>
+              </ul>
+            </div>
+            <div class="main_menu pull-right">
+              <ul>
+                <li class="">
+                  <a href="home">Home</a>
+                </li>
+              </ul>
+            </div>
+            <div class="menu_responsive">
+              <span onclick="openNav()"><span>Menu</span><i class="fa fa-bars" aria-hidden="true"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header_bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-7 col-xs-12">
+          <div class="full">
+            <div class="search_bar">
+              <form class="search_form" method="GET" action="search">
+                <input type="text" name="movieName" placeholder="Quick Search" id="quick_search" autocomplete="off">
+                <button type="submit"><img
+                    src="{% static 'staticFiles/search_icon.webp' %}"
+                    height="24" width="24" alt="#"></button>
+                <ul class="search_results">
+
+                </ul>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-5 col-xs-12">
+          <div class="right-btn pull-right">
+            <ul class="user_cater">
+              {#              <li><a href="#">Login</a></li>#}
+              <li><a href="register">Register</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="login-box padding_layout">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-3 col-xs-12"></div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="in-form-login">
+          <h2>User login</h2>
+          <form class="form-horizontal" method="POST" action="login">
+            {% csrf_token %}
+
+            <div class="form-log">
+              <input id="email" type="email" class="form-control" name="email" placeholder="Email:" value="" required=""
+                     autofocus="">
+            </div>
+            <div class="form-log ">
+              <input id="password" type="password" class="form-control" name="password" placeholder="Password:"
+                     required="">
+            </div>
+            <div class="form-log">
+              <button style="width: 100%" class="btn btn_theme" type="submit">Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-12"></div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'staticFiles/jquery.min.js' %}"></script>
+<script src="{% static 'staticFiles/wow.js' %}"></script>
+<script src="{% static 'staticFiles/customv7.js' %}"></script>
+<script src="{% static 'staticFiles/jquery.bootstrap-responsive-tabs.min.js' %}"></script>
+</div>
+</body>
+
+</html>

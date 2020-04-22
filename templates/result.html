@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Result</title>
+  <meta name="viewport"
+        content="width=device-width, minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="{% static 'staticFiles/style1.css' %}">
+</head>
+
+<body class="non-touch">
+<header class="nav-bar">
+
+  <div class="main-nav-links hidden-sm hidden-xs">
+    <form method="GET" action="search" accept-charset="UTF-8" id="quick-search"
+          name="movieName">
+      <div id="quick-search-container">
+        <input id="quick-search-input" name="movieName" autocomplete="off" type="search" placeholder="Quick search">
+        <div class="ajax-spinner" style="background-position: -96px 0px;"></div>
+      </div>
+    </form>
+    <ul class="nav-links">
+      <li><a href="home"> Home </a></li>
+      <li><a href="genres"> Genres </a></li>
+      <li><a href="topRated"> Top Rated </a></li>
+{#      <li><a href="movieList"> A-Z </a></li>#}
+      <li><a href="requestMovie"> Request </a></li>
+    </ul>
+    <ul class="nav-links nav-link-guest">
+      <li><a class="login-nav-btn" href="doLogin"> Login </a> &nbsp;|&nbsp; <a class="register-nav-btn" href="register"> Register </a></li>
+    </ul>
+  </div>
+</header>
+<div id="background-image"
+     style="background: url({% static 'staticFiles/background.jpg' %}) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;">
+</div>
+<div id="background-overlay"></div>
+<div class="modal modal-auth hidden-xs hidden-sm">
+</div>
+<div class="main-content">
+  <div class="ac-results hidden-sm hidden-xs">
+    <ul></ul>
+  </div>
+  <div class="container home-content">
+  </div>
+  <div class="content-dark">
+    <div class="container home-content">
+      <div class="home-movies">
+        <div class="row">
+          <h2>Results</h2>
+        </div>
+        <div class="row">
+          <div class="browse-movie-wrap col-xs-8 col-sm-4">
+            <a href="getMovie?movieId={{ index }}" class="browse-movie-link">
+              <figure>
+                <img class="img-responsive"
+                     src="{% static 'staticFiles/medium-cover(4).jpg' %}"
+                     alt="{{ movie_name }}" width="210" height="315">
+                <figcaption class="hidden-xs hidden-sm">
+                  <span class="icon-star"></span>
+                  <h4 class="rating">{{ rate }}</h4>
+                  <h4>{{ genre }}</h4>
+                  <span class="button-green-download2-big">View Details</span>
+                </figcaption>
+              </figure>
+            </a>
+            <div class="browse-movie-bottom">
+              <a href="#" class="browse-movie-title">{{ movie_name }}</a>
+{#              <div class="browse-movie-year">1940</div>#}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

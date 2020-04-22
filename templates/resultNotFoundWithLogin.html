@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Result</title>
+  <meta name="viewport"
+        content="width=device-width, minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="{% static 'staticFiles/style1.css' %}">
+</head>
+
+<body class="non-touch">
+<header class="nav-bar">
+
+{#  <span class="header-slogan hidden-xs pull-left">Hello {{ data.firstName }} {{ data.lastName }}</span>#}
+  <div class="main-nav-links hidden-sm hidden-xs">
+    <form method="GET" action="search" accept-charset="UTF-8" id="quick-search"
+          name="quick-search">
+      <div id="quick-search-container">
+        <input id="quick-search-input" name="movieName" autocomplete="off" type="search" placeholder="Quick search">
+        <div class="ajax-spinner" style="background-position: -96px 0px;"></div>
+      </div>
+    </form>
+    <ul class="nav-links">
+      <li><a href="home"> Home </a></li>
+      <li><a href="getWatchList"> Watchlist </a></li>
+      <li><a href="genres"> Genres </a></li>
+      <li><a href="topRated"> Top Rated </a></li>
+      {#      <li><a href="movieList"> A-Z </a></li>#}
+      <li><a href="requestMovie"> Request </a></li>
+      <li><a href="logout"> Logout </a></li>
+    </ul>
+  </div>
+</header>
+<div id="background-image"
+     style="background: url({% static 'staticFiles/background.jpg' %}) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;">
+</div>
+<div id="background-overlay"></div>
+<div class="modal modal-auth hidden-xs hidden-sm">
+</div>
+<div class="main-content">
+  <div class="ac-results hidden-sm hidden-xs">
+    <ul></ul>
+  </div>
+  <div class="container home-content">
+  </div>
+  <div class="content-dark">
+    <div class="container home-content">
+      <div class="hidden-xs hidden-sm">
+        <h1>Result Not Found</h1>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

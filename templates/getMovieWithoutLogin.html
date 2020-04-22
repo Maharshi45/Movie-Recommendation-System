@@ -1,0 +1,275 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="{% static 'staticFiles/style2.css' %}">
+  <title>{{ movie_name }}
+  </title>
+  <meta name="viewport"
+        content="width=device-width, minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body class="non-touch">
+<header class="nav-bar">
+
+  <div class="main-nav-links hidden-sm hidden-xs">
+    <form method="GET" action="search" accept-charset="UTF-8" id="quick-search"
+          name="movieName">
+      <div id="quick-search-container">
+        <input id="quick-search-input" name="movieName" autocomplete="off" type="search" placeholder="Quick search">
+        <div class="ajax-spinner" style="background-position: -96px 0px;"></div>
+      </div>
+    </form>
+    <ul class="nav-links">
+      <li><a href="home"> Home </a></li>
+      <li><a href="genres"> Genres </a></li>
+      <li><a href="topRated"> Top Rated </a></li>
+      {#      <li><a href="movieList"> A-Z </a></li>#}
+      <li><a href="requestMovie"> Request </a></li>
+    </ul>
+    <ul class="nav-links nav-link-guest">
+      <li><a class="login-nav-btn" href="doLogin"> Login </a> &nbsp;|&nbsp; <a class="register-nav-btn" href="register">
+        Register </a></li>
+    </ul>
+  </div>
+</header>
+<div id="background-image"
+     style="background: url({% static 'staticFiles/background3.jpg' %}) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;">
+</div>
+<div id="background-overlay"></div>
+<div class="main-content">
+  <div class="container" id="movie-content" itemscope="" itemtype="http://schema.org/Movie">
+    <div class="row">
+      <div id="mobile-movie-info" class="visible-xs col-xs-20">
+        <h1 itemprop="name">{{ movie_name }}</h1>
+        <h2>{{ genres }}</h2>
+      </div>
+      <div id="movie-poster" class="col-xs-10 col-sm-6 col-lg-5">
+        <img class="img-responsive" itemprop="image" src="{% static 'staticFiles/medium-cover.jpg' %}"
+             alt="Birds of Prey: And the Fantabulous Emancipation of One Harley Quinn (2020) download">
+        <div class="addthis_sharing_toolbox" style="margin-top: 15px; clear: both;"
+             data-url="https://yts.mx/movie/birds-of-prey-and-the-fantabulous-emancipation-of-one-harley-quinn-2020"
+             data-title="Birds of Prey: And the Fantabulous Emancipation of One Harley Quinn (2020) YIFY - Download Movie TORRENT - YTS"
+             data-description="A twisted tale told by Harley Quinn herself, when Gotham&#39;s most nefariously narcissistic villain, Roman Sionis, and his zealous right-hand, Zsasz, put">
+          <div id="atstbx" class="at-share-tbx-element addthis-smartlayers addthis-animated at4-show"
+               aria-labelledby="at-44abdaff-37c4-4028-8a34-cad9831750e1" role="region">
+          </div>
+        </div>
+        <a class="torrent-modal-download button-green-download2-big hidden-xs hidden-sm"
+           href="addToWatchList?movieId={{ movie_id }}">Add to Watchlist</a>
+      </div>
+      <div id="movie-info" class="col-xs-10 col-sm-14 col-md-7 col-lg-8 col-lg-offset-1" data-movie-id="16131">
+        <div class="hidden-xs">
+          <h1>{{ movie_name }}</h1>
+          <h2>{{ genres }}</h2>
+        </div>
+        <div class="bottom-info">
+          <div class="rating-row">
+            <span title="Likes" class="icon icon-heart">Ratings</span>
+            <span id="movie-likes">{{ rating }} / 5</span>
+          </div>
+        </div>
+      </div>
+{#      <div id="movie-related" class="col-md-6 hidden-xs hidden-sm">#}
+{#        <p>Similar Movies</p>#}
+{#        {% for d in data %}#}
+{#        <a href="getMovie?movieId={{ d.index }}" title="{{ d.movie }}"><img#}
+{#            src="{% static 'staticFiles/medium-cover(1).jpg' %}" alt="Let Us Prey (2014) download"></a>#}
+{#        {% endfor %}#}
+{#      </div>#}
+    </div>
+{#    <div id="screenshots" class="row hidden-xs hidden-sm">#}
+{#      <div class="screenshot">#}
+{#        <a class="screenshot-group imghov cboxElement" href="#"><img#}
+{#            src="{% static 'staticFiles/medium-screenshot1.jpg' %}"#}
+{#            alt="{{ movie_name }}"></a>#}
+{#      </div>#}
+{#      <div class="screenshot">#}
+{#        <a class="screenshot-group imghov cboxElement" href="#"><img#}
+{#            src="{% static 'staticFiles/medium-screenshot2.jpg' %}"#}
+{#            alt="{{ movie_name }}"></a>#}
+{#      </div>#}
+{#      <div class="screenshot">#}
+{#        <a class="screenshot-group imghov cboxElement" href="#"><img#}
+{#            src="{% static 'staticFiles/medium-screenshot3.jpg' %}"#}
+{#            alt="{{ movie_name }}"></a>#}
+{#      </div>#}
+{#    </div>#}
+    <div id="movie-sub-info" class="row">
+      <div id="synopsis" class="col-sm-10 col-md-13 col-lg-12">
+        <h3>Synopsis</h3>
+        <p class="hidden-sm hidden-md hidden-lg"> A twisted tale told by Harley Quinn herself, when Gotham's most
+          nefariously narcissistic villain, Roman Sionis, and his zealous right-hand, Zsasz, put a target on a young
+          girl named Cass, the city is turned upside down looking for
+          her. Harley, Huntress, Black Canary and Renee Montoya's paths collide, and the unlikely foursome have no
+          choice but to team up to take Roman down. </p>
+        <p class="hidden-xs"> A twisted tale told by Harley Quinn herself, when Gotham's most nefariously narcissistic
+          villain, Roman Sionifs, and his zealous right-hand, Zsasz, put a target on a young girl named Cass, the city
+          is turned upside down looking for
+          her. Harley, Huntress, Black Canary and Renee Montoya's paths collide, and the unlikely foursome have no
+          choice but to team up to take Roman down. </p>
+      </div>
+      <div id="crew" class="col-sm-10 col-md-7 col-lg-offset-1">
+        <div class="directors">
+          <h3>Director</h3>
+          <div class="list-cast">
+            <div class="tableCell">
+              <a class="avatar-thumb" href="#" target="_blank"
+                 title="IMDb Profile"> <img src="{% static 'staticFiles/default_avatar.jpg' %}" alt="Cathy Yan Picture">
+              </a>
+            </div>
+            <div class="list-cast-info tableCell">
+              <a class="name-cast" href="#">
+                <span itemprop="director" itemscope="" itemtype="http://schema.org/Person"><span itemprop="name">Cathy Yan</span></span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="actors">
+          <h3>Cast</h3>
+          <div class="list-cast">
+            <div class="tableCell">
+              <a class="avatar-thumb" href="#" target="_blank"
+                 title="IMDb Profile"> <img src="{% static 'staticFiles/nm3053338.jpg' %}" alt="Margot Robbie Picture">
+              </a>
+            </div>
+            <div class="list-cast-info tableCell">
+              <a class="name-cast" href="#"><span itemprop="actor"
+                                                  itemscope="" itemtype="http://schema.org/Person"><span
+                  itemprop="name">Margot
+                      Robbie</span></span></a> as Harley Quinn
+            </div>
+          </div>
+          <div class="list-cast">
+            <div class="tableCell">
+              <a class="avatar-thumb" href="#" target="_blank"
+                 title="IMDb Profile"> <img src="{% static 'staticFiles/nm0000191.jpg' %}" alt="Ewan McGregor Picture">
+              </a>
+            </div>
+            <div class="list-cast-info tableCell">
+              <a class="name-cast" href="#"><span itemprop="actor"
+                                                  itemscope="" itemtype="#"><span itemprop="name">Ewan
+                      McGregor</span></span></a> as Roman Sionis
+            </div>
+          </div>
+          <div class="list-cast">
+            <div class="tableCell">
+              <a class="avatar-thumb" href="#" target="_blank"
+                 title="IMDb Profile"> <img src="{% static 'staticFiles/nm0935541.jpg' %}"
+                                            alt="Mary Elizabeth Winstead Picture">
+              </a>
+            </div>
+            <div class="list-cast-info tableCell">
+              <a class="name-cast" href="#"><span
+                  itemprop="actor" itemscope="" itemtype="http://schema.org/Person"><span itemprop="name">Mary
+                      Elizabeth Winstead</span></span></a> as Helena Bertinelli / The Huntress
+            </div>
+          </div>
+          <div class="list-cast">
+            <div class="tableCell">
+              <a class="avatar-thumb" href="#" target="_blank"
+                 title="IMDb Profile"> <img src="{% static 'staticFiles/default_avatar.jpg' %}"
+                                            alt="Jurnee Smollett-Bell Picture">
+              </a>
+            </div>
+            <div class="list-cast-info tableCell">
+              <a class="name-cast" href="#"><span itemprop="actor"
+                                                  itemscope="" itemtype="#"><span itemprop="name">Jurnee
+                      Smollett-Bell</span></span></a> as Dinah Lance / Black Canary
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{#    <div id="movie-bottom" class="row">#}
+{#      <div id="movie-reviews" class="col-xs-40 col-md-20">#}
+{#        <h3><span class="icon-star"></span>Movie Reviews</h3>#}
+{#        <div class="review">#}
+{#          <div class="review-properties">#}
+{#            Reviewed by <span class="review-author">Nummer9</span>#}
+{#            <span class="icon-star"></span>#}
+{#            <span class="review-rating">1 / 10</span>#}
+{#          </div>#}
+{#          <h4>Worst experience of my life</h4>#}
+{#          <article>#}
+{#            <p>Well i highly suggest that you do not smoke before starting that movie. I did and i was trapped on my#}
+{#              couch without the will to move my arm to reach the remote control. So i was literally forced to watch#}
+{#              the whole movie! If#}
+{#              i ever will be a bad person and that for go to hell this exact situation but for all eternity will be my#}
+{#              punishment. I started praying daily to prevent this horrible fate.</p>#}
+{#          </article>#}
+{#        </div>#}
+{#        <div class="line"></div>#}
+{#        <div class="review">#}
+{#          <div class="review-properties">#}
+{#            Reviewed by <span class="review-author">dnl_hggns</span>#}
+{#            <span class="icon-star"></span>#}
+{#            <span class="review-rating">1 / 10</span>#}
+{#          </div>#}
+{#          <h4>Wow</h4>#}
+{#          <article>#}
+{#            <p>What did I just sit through? I seriously cannot believe that this film was made let alone the studio#}
+{#              thought that it would make money. This film makes the Batwoman TV show look good and i didn't think that#}
+{#              was possible.</p>#}
+{#          </article>#}
+{#        </div>#}
+{#        <div class="line"></div>#}
+{#        <div class="review">#}
+{#          <div class="review-properties">#}
+{#            Reviewed by <span class="review-author">Impartial-Critic</span>#}
+{#            <span class="icon-star"></span>#}
+{#            <span class="review-rating">2 / 10</span>#}
+{#          </div>#}
+{#          <h4>A Disgracful Chick Flick for Most Comic Books Fans.</h4>#}
+{#          <article class="readmore-js-section readmore-js-collapsed" style="height: 125px;">#}
+{#            <p>I don't believe this movie is any good or remotely enjoyable for DC fans or even any fan of Harley#}
+{#              Quinn, having a female writer and director should be a big giveaway that this will end up being a chick#}
+{#              flick, the movie title#}
+{#              to begin with should've been, Harley Quinn and (insert any name here) because simply it has nothing to#}
+{#              do with being a Birds of Prey team movie, the plot is simple, a crappy version of "Harley Quinn" vs. an#}
+{#              ugly homosexual#}
+{#              portrayed version of "Black Mask" with some shadowed presence of the "Birds of Prey" who only relate to#}
+{#              the comics by just their names.<br><br>The movie sadly takes a feminist point of view but in a more lame#}
+{#              yet offensive#}
+{#              approach, every lead male character in the movie is either homosexual, bisexual, where the minor male#}
+{#              characters are just plain jerks! The plot is weak and the acting is mediocre and feels very cheesy at#}
+{#              some scenes, the#}
+{#              casting choices are way off the authenticity of the characters, as if they wanted to compile all races#}
+{#              in one movie that no one feels left out with a complete neglect to the comic books or TV series#}
+{#              authenticity...like#}
+{#              their choice to go with the "Asian" choice of Cassandra Cain instead of Barbara Gordon, Batgirl. The#}
+{#              scenes decoration is too colorful in a wrong manner, I can understand that a Harley Quinn movie should#}
+{#              be colorful and#}
+{#              chaotic but there's a huge difference between an artistic chaos, this is why the decoration of this#}
+{#              movie feels like it was designed by a crazed extravagant fashion designer! while the directing was#}
+{#              clearly all over the#}
+{#              place.#}
+{#              <br><br>I'll never change my mind when I say that Margot Robbie is a poor choice for Harley Quinn#}
+{#              character, she doesn't look like Harley - Harley has a round face while Margot has more of a square or a#}
+{#              bit of an oblong#}
+{#              face - she doesn't feel like Harley Quinn...Harley is a very dangerous, sadistic character...too#}
+{#              dangerous that many times the Joker himself is scared of her, she even beat him up in many occasions.#}
+{#              Completely different#}
+{#              than the childish spoiled brat which depicted in this movie and sure as hell Margot Robbie does not#}
+{#              sound like Harley Quinn! I'm sure the only reason why many are drooling over her is because no one has#}
+{#              seen any other depiction#}
+{#              of Harley Quinn on the big screen. Just like how people were fascinated when Jack Nicholson played the#}
+{#              Joker...No one back then knew there will be Heath Ledger or Joaquin Phoenix who owned the role in their#}
+{#              own way!<br><br>Since#}
+{#              they decided to cast Margot Robbie again for this role even after this disastrous movie, at least they#}
+{#              should ask her to go learn from Arleen Sorkin how to say Mr. J and Puddin' ! and for F's sake give her#}
+{#              an adult oversized#}
+{#              mallet to crush skulls with instead of that childish toy she carried in few scenes in this disastrous#}
+{#              movie.#}
+{#            </p>#}
+{#          </article>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+  </div>
+</div>
+</body>
+</html>

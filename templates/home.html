@@ -1,0 +1,191 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Home</title>
+  <meta name="viewport"
+        content="width=device-width, minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="{% static 'staticFiles/style1.css' %}">
+</head>
+
+<body class="non-touch">
+<header class="nav-bar">
+
+  <span class="header-slogan hidden-xs pull-left">Movie Recommendation System</span>
+  <div class="main-nav-links hidden-sm hidden-xs">
+    <form method="GET" action="search" accept-charset="UTF-8" id="quick-search"
+          name="movieName">
+      <div id="quick-search-container">
+        <input id="quick-search-input" name="movieName" autocomplete="off" type="search" placeholder="Quick search">
+        <div class="ajax-spinner" style="background-position: -96px 0px;"></div>
+      </div>
+    </form>
+    <ul class="nav-links">
+      <li><a href="home"> Home </a></li>
+      <li><a href="genres"> Genres </a></li>
+      <li><a href="topRated"> Top Rated </a></li>
+      {#      <li><a href="movieList"> A-Z </a></li>#}
+      <li><a href="requestMovie"> Request </a></li>
+    </ul>
+    <ul class="nav-links nav-link-guest">
+      <li><a class="login-nav-btn" href="doLogin"> Login </a> &nbsp;|&nbsp; <a class="register-nav-btn" href="register">
+        Register </a></li>
+    </ul>
+  </div>
+</header>
+<div id="background-image"
+     style="background: url({% static 'staticFiles/background.jpg' %}) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;">
+</div>
+<div id="background-overlay"></div>
+<div class="modal modal-auth hidden-xs hidden-sm">
+</div>
+<div class="main-content">
+  <div class="ac-results hidden-sm hidden-xs">
+    <ul></ul>
+  </div>
+  <div class="container home-content">
+    <div class="hidden-xs hidden-sm">
+      {#      <h1>Download YTS YIFY movies: HD smallest size</h1>#}
+      {#      <p>#}
+      {#        Welcome to the official <b>YTS.MX</b> (.LT) website. Here you can browse and download YIFY movies in#}
+      {#        excellent 720p, 1080p, 2160p 4K and 3D quality, all at the smallest file size. YTS Movies Torrents.#}
+      {#        <br><br>#}
+      {#      </p>#}
+      {#    </div>#}
+      <div class="container home-content">
+        <div class="home-movies">
+          <div class="row">
+            <h2>Popular</h2>
+          </div>
+          {% for d in data %}
+            <div class="browse-movie-wrap col-xs-8 col-sm-4">
+              <a href="getMovie?movieId={{ d.index }}" class="browse-movie-link">
+                <figure>
+                  <img class="img-responsive"
+                       src="{% static 'staticFiles/medium-cover.jpg' %}"
+                       alt="" width="210" height="315">
+                  <figcaption class="hidden-xs hidden-sm">
+                    <span class="icon-star"></span>
+                    <h4 class="rating">{{ d.rating }}</h4>
+                    <h4>{{ d.genre }}</h4>
+                    <span class="button-green-download2-big">View Details</span>
+                  </figcaption>
+                </figure>
+              </a>
+              <div class="browse-movie-bottom">
+                <a href="getMovie?movieId={{ d.index }}" class="browse-movie-title">{{ d.movie }}</a>
+                {#              <div class="browse-movie-year">2019</div>#}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+      </div>
+      <div class="container home-content">
+        <div class="home-movies">
+          <div class="row">
+            <h2>Recent</h2>
+          </div>
+          <div class="row">
+            <div class="browse-movie-wrap col-xs-8 col-sm-4">
+              <a href="getMovie?movieId=86" class="browse-movie-link">
+                <figure>
+                  <img class="img-responsive"
+                       src="{% static 'staticFiles/medium-cover(1).jpg' %}"
+                       alt="White Squall (1996)" width="210" height="315">
+                  <figcaption class="hidden-xs hidden-sm">
+                    <span class="icon-star"></span>
+                    <h4 class="rating">5.0</h4>
+                    <h4>Action|Adventure|Drama</h4>
+                    <span class="button-green-download2-big">View Details</span>
+                  </figcaption>
+                </figure>
+              </a>
+              <div class="browse-movie-bottom">
+                <a href="getMovie?movieId=86" class="browse-movie-title">White Squall (1996)</a>
+              </div>
+            </div>
+            <div class="browse-movie-wrap col-xs-8 col-sm-4">
+              <a href="getMovie?movieId=1380" class="browse-movie-link">
+                <figure>
+                  <img class="img-responsive"
+                       src="{% static 'staticFiles/medium-cover(2).jpg' %}"
+                       alt="Grease (1978)" width="210" height="315">
+                  <figcaption class="hidden-xs hidden-sm">
+                    <span class="icon-star"></span>
+                    <h4 class="rating">5.0</h4>
+                    <h4>Comedy|Musical|Romance</h4>
+                    <span class="button-green-download2-big">View Details</span>
+                  </figcaption>
+                </figure>
+              </a>
+              <div class="browse-movie-bottom">
+                <a href="getMovie?movieId=1380" class="browse-movie-title">Grease (1978)</a>
+              </div>
+            </div>
+            <div class="browse-movie-wrap col-xs-8 col-sm-4">
+              <a href="getMovie?movieId=916" class="browse-movie-link">
+                <figure>
+                  <img class="img-responsive"
+                       src="{% static 'staticFiles/medium-cover(3).jpg' %}"
+                       alt="Roman Holiday (1953)" width="210" height="315">
+                  <figcaption class="hidden-xs hidden-sm">
+                    <span class="icon-star"></span>
+                    <h4 class="rating">5.0</h4>
+                    <h4>Comedy|Drama|Romance</h4>
+                    <span class="button-green-download2-big">View Details</span>
+                  </figcaption>
+                </figure>
+              </a>
+              <div class="browse-movie-bottom">
+                <a href="getMovie?movieId=916" class="browse-movie-title">Roman Holiday (1953)</a>
+              </div>
+            </div>
+            <div class="browse-movie-wrap col-xs-8 col-sm-4">
+              <a href="getMovie?movieId=239" class="browse-movie-link">
+                <figure>
+                  <img class="img-responsive"
+                       src="{% static 'staticFiles/medium-cover(4).jpg' %}"
+                       alt="Goofy Movie, A (1995)" width="210" height="315">
+                  <figcaption class="hidden-xs hidden-sm">
+                    <span class="icon-star"></span>
+                    <h4 class="rating">5.0</h4>
+                    <h4>Animation|Children|Comedy|Romance</h4>
+                    <span class="button-green-download2-big">View Details</span>
+                  </figcaption>
+                </figure>
+              </a>
+              <div class="browse-movie-bottom">
+                <a href="getMovie?movieId=239" class="browse-movie-title">Goofy Movie, A (1995)</a>
+              </div>
+            </div>
+            <div class="browse-movie-wrap col-xs-8 col-sm-4">
+              <a href="getMovie?movieId=1754" class="browse-movie-link">
+                <figure>
+                  <img class="img-responsive"
+                       src="{% static 'staticFiles/medium-cover(5).jpg' %}"
+                       alt="Fallen (1998)" width="210" height="315">
+                  <figcaption class="hidden-xs hidden-sm">
+                    <span class="icon-star"></span>
+                    <h4 class="rating">5.0</h4>
+                    <h4>Crime|Drama|Fantasy|Thriller</h4>
+                    <span class="button-green-download2-big">View Details</span>
+                  </figcaption>
+                </figure>
+              </a>
+              <div class="browse-movie-bottom">
+                <a href="getMovie?movieId=1754" class="browse-movie-title">Fallen (1998)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="{% static 'staticFiles/style2.css' %}">
+  <title>{{ movie_name }}
+  </title>
+  <meta name="viewport"
+        content="width=device-width, minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body class="non-touch">
+<header class="nav-bar">
+
+  {#  <span class="header-slogan hidden-xs pull-left">Hello {{ data.firstName }} {{ data.lastName }}</span>#}
+  <div class="main-nav-links hidden-sm hidden-xs">
+    <form method="GET" action="search" accept-charset="UTF-8" id="quick-search"
+          name="quick-search">
+      <div id="quick-search-container">
+        <input id="quick-search-input" name="movieName" autocomplete="off" type="search" placeholder="Quick search">
+        <div class="ajax-spinner" style="background-position: -96px 0px;"></div>
+      </div>
+    </form>
+    <ul class="nav-links">
+      <li><a href="home"> Home </a></li>
+      <li><a href="getWatchList"> Watchlist </a></li>
+      <li><a href="genres"> Genres </a></li>
+      <li><a href="topRated"> Top Rated </a></li>
+      <li><a href="requestMovie"> Request </a></li>
+      <li><a href="logout"> Logout </a></li>
+    </ul>
+  </div>
+</header>
+<div id="background-image"
+     style="background: url({% static 'staticFiles/background3.jpg' %}) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;">
+</div>
+<div id="background-overlay"></div>
+<div class="main-content">
+  <div class="container" id="movie-content" itemscope="" itemtype="http://schema.org/Movie">
+    <div class="row">
+      <div id="mobile-movie-info" class="visible-xs col-xs-20">
+        <h1 itemprop="name">{{ movie_name }}</h1>
+        <h2>{{ genres }}</h2>
+      </div>
+      <div id="movie-poster" class="col-xs-10 col-sm-6 col-lg-5">
+        <img class="img-responsive" itemprop="image" src="{% static 'staticFiles/medium-cover.jpg' %}"
+             alt="Birds of Prey: And the Fantabulous Emancipation of One Harley Quinn (2020) download">
+        <div class="addthis_sharing_toolbox" style="margin-top: 15px; clear: both;"
+             data-url="https://yts.mx/movie/birds-of-prey-and-the-fantabulous-emancipation-of-one-harley-quinn-2020"
+             data-title="Birds of Prey: And the Fantabulous Emancipation of One Harley Quinn (2020) YIFY - Download Movie TORRENT - YTS"
+             data-description="A twisted tale told by Harley Quinn herself, when Gotham&#39;s most nefariously narcissistic villain, Roman Sionis, and his zealous right-hand, Zsasz, put">
+          <div id="atstbx" class="at-share-tbx-element addthis-smartlayers addthis-animated at4-show"
+               aria-labelledby="at-44abdaff-37c4-4028-8a34-cad9831750e1" role="region">
+          </div>
+        </div>
+        <a class="torrent-modal-download button-green-download2-big hidden-xs hidden-sm"
+           href="addToWatchList?movieId={{ movie_id }}">Add to Watchlist</a>
+      </div>
+      <div id="movie-info" class="col-xs-10 col-sm-14 col-md-7 col-lg-8 col-lg-offset-1" data-movie-id="16131">
+        <div class="hidden-xs">
+          <h1>{{ movie_name }}</h1>
+          <h2>{{ genres }}</h2>
+        </div>
+        <div class="bottom-info">
+          <div class="rating-row">
+            <span title="Likes" class="icon icon-heart">Ratings</span>
+            <span id="movie-likes">{{ rating }} / 5</span>
+          </div>
+        </div>
+      </div>
+{#      <div id="movie-related" class="col-md-6 hidden-xs hidden-sm">#}
+{#        <p>Similar Movies</p>#}
+{#        {% for d in data %}#}
+{#          <a href="getMovie?movieId={{ d.index }}" title="{{ d.movie }}"><img#}
+{#              src="{% static 'staticFiles/medium-cover(1).jpg' %}" alt="Let Us Prey (2014) download"></a>#}
+{#        {% endfor %}#}
+{#      </div>#}
+    </div>
+    <div id="movie-sub-info" class="row">
+      <div id="synopsis" class="col-sm-10 col-md-13 col-lg-12">
+        <h3>Synopsis</h3>
+        <p class="hidden-sm hidden-md hidden-lg"> A twisted tale told by Harley Quinn herself, when Gotham's most
+          nefariously narcissistic villain, Roman Sionis, and his zealous right-hand, Zsasz, put a target on a young
+          girl named Cass, the city is turned upside down looking for
+          her. Harley, Huntress, Black Canary and Renee Montoya's paths collide, and the unlikely foursome have no
+          choice but to team up to take Roman down. </p>
+        <p class="hidden-xs"> A twisted tale told by Harley Quinn herself, when Gotham's most nefariously narcissistic
+          villain, Roman Sionifs, and his zealous right-hand, Zsasz, put a target on a young girl named Cass, the city
+          is turned upside down looking for
+          her. Harley, Huntress, Black Canary and Renee Montoya's paths collide, and the unlikely foursome have no
+          choice but to team up to take Roman down. </p>
+      </div>
+      <div id="crew" class="col-sm-10 col-md-7 col-lg-offset-1">
+        <div class="directors">
+          <h3>Director</h3>
+          <div class="list-cast">
+            <div class="tableCell">
+              <a class="avatar-thumb" href="#" target="_blank"
+                 title="IMDb Profile"> <img src="{% static 'staticFiles/default_avatar.jpg' %}" alt="Cathy Yan Picture">
+              </a>
+            </div>
+            <div class="list-cast-info tableCell">
+              <a class="name-cast" href="#">
+                <span itemprop="director" itemscope="" itemtype="http://schema.org/Person"><span itemprop="name">Cathy Yan</span></span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="actors">
+          <h3>Cast</h3>
+          <div class="list-cast">
+            <div class="tableCell">
+              <a class="avatar-thumb" href="#" target="_blank"
+                 title="IMDb Profile"> <img src="{% static 'staticFiles/nm3053338.jpg' %}" alt="Margot Robbie Picture">
+              </a>
+            </div>
+            <div class="list-cast-info tableCell">
+              <a class="name-cast" href="#"><span itemprop="actor"
+                                                  itemscope="" itemtype="http://schema.org/Person"><span
+                  itemprop="name">Margot
+                      Robbie</span></span></a> as Harley Quinn
+            </div>
+          </div>
+          <div class="list-cast">
+            <div class="tableCell">
+              <a class="avatar-thumb" href="#" target="_blank"
+                 title="IMDb Profile"> <img src="{% static 'staticFiles/nm0000191.jpg' %}" alt="Ewan McGregor Picture">
+              </a>
+            </div>
+            <div class="list-cast-info tableCell">
+              <a class="name-cast" href="#"><span itemprop="actor"
+                                                  itemscope="" itemtype="#"><span itemprop="name">Ewan
+                      McGregor</span></span></a> as Roman Sionis
+            </div>
+          </div>
+          <div class="list-cast">
+            <div class="tableCell">
+              <a class="avatar-thumb" href="#" target="_blank"
+                 title="IMDb Profile"> <img src="{% static 'staticFiles/nm0935541.jpg' %}"
+                                            alt="Mary Elizabeth Winstead Picture">
+              </a>
+            </div>
+            <div class="list-cast-info tableCell">
+              <a class="name-cast" href="#"><span
+                  itemprop="actor" itemscope="" itemtype="http://schema.org/Person"><span itemprop="name">Mary
+                      Elizabeth Winstead</span></span></a> as Helena Bertinelli / The Huntress
+            </div>
+          </div>
+          <div class="list-cast">
+            <div class="tableCell">
+              <a class="avatar-thumb" href="#" target="_blank"
+                 title="IMDb Profile"> <img src="{% static 'staticFiles/default_avatar.jpg' %}"
+                                            alt="Jurnee Smollett-Bell Picture">
+              </a>
+            </div>
+            <div class="list-cast-info tableCell">
+              <a class="name-cast" href="#"><span itemprop="actor"
+                                                  itemscope="" itemtype="#"><span itemprop="name">Jurnee
+                      Smollett-Bell</span></span></a> as Dinah Lance / Black Canary
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

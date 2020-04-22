@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Request</title>
+  <link rel="stylesheet" href="{% static 'staticFiles/style3.css' %}">
+</head>
+
+<body class="non-touch">
+<header class="nav-bar">
+
+  <div class="main-nav-links hidden-sm hidden-xs">
+    <form method="GET" action="search" accept-charset="UTF-8" id="quick-search"
+          name="quick-search">
+      <div id="quick-search-container">
+        <input id="quick-search-input" name="movieName" autocomplete="off" type="search" placeholder="Quick search">
+        <div class="ajax-spinner" style="background-position: -96px 0px;"></div>
+      </div>
+    </form>
+    <ul class="nav-links">
+      <li><a href="home"> Home </a></li>
+      <li><a href="getWatchList"> Watchlist </a></li>
+      <li><a href="genres"> Genres </a></li>
+      <li><a href="topRated"> Top Rated </a></li>
+      <li><a href="requestMovie"> Request </a></li>
+      <li><a href="logout"> Logout </a></li>
+    </ul>
+  </div>
+</header>
+<div id="background-image"
+     style="background: url({% static 'staticFiles/background4.jpg' %}) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;">
+</div>
+<div id="background-overlay"></div>
+<div class="main-content">
+  <div class="container">
+    <div class="row" id="info-page">
+      <div class="col-xs-40 col-md-20">
+        <h2>Movie Request</h2>
+        <form method="post" action="doRequestMovie" accept-charset="UTF-8">
+          {% csrf_token %}
+          <label for="movie_title">Movie Title:</label>
+          <input class="contact" autocomplete="off" name="movie" type="text" id="movie_title" required="">
+
+          <div class="send-btn">
+            <input class="button-green-download2-big" type="submit" value="Send Request">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
